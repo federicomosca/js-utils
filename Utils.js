@@ -1,8 +1,9 @@
-/*
-* converto una data in una stringa con formato YYYY-MM-DDTHH:mm:ss
-* non tiene conto del fuso orario
-*/
-const toLocalISOString = date => {
+/**
+ * converto una data in una stringa con formato YYYY-MM-DDTHH:mm:ss
+ * @param {any} date
+ * @returns string
+ */
+const dateToLocalISOString = date => {
     const pad = (n) => (n < 10 ? '0' + n : n);
     return date.getFullYear() + '-' +
         pad(date.getMonth() + 1) + '-' +
@@ -12,18 +13,13 @@ const toLocalISOString = date => {
         pad(date.getSeconds());
 };
 
-/*
-* rimuovo le parentesi graffe dall'id
-*/
-
-function cleanId(id) {
-    var cleanedId = 0;
-    if (id) {
-        cleanedId = id.replace(/[{}]/g, "");
-    } else {
-        console.log(`Given ID(${id}) is not valid.`);
-    }
-    return cleanedId;
+/**
+ * rimuovo le parentesi graffe dall'id
+ * @param {string} id
+ * @returns string or error
+ */
+const cleanId = id => {
+    return id ? id.replace(/[{}]/g, "") : new Error(`ID ${id} not valid.`);
 }
 
 
