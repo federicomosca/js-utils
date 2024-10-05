@@ -1,4 +1,8 @@
-﻿const toLocalISOString = date => {
+/*
+* converto una data in una stringa con formato YYYY-MM-DDTHH:mm:ss
+* non tiene conto del fuso orario
+*/
+const toLocalISOString = date => {
     const pad = (n) => (n < 10 ? '0' + n : n);
     return date.getFullYear() + '-' +
         pad(date.getMonth() + 1) + '-' +
@@ -7,6 +11,10 @@
         pad(date.getMinutes()) + ':' +
         pad(date.getSeconds());
 };
+
+/*
+* rimuovo le parentesi graffe dall'id
+*/
 
 function cleanId(id) {
     var cleanedId = 0;
@@ -17,6 +25,7 @@ function cleanId(id) {
     }
     return cleanedId;
 }
+
 
 function validateDuration(timeWithAnyPunctuationMark) {
     const time = timeWithAnyPunctuationMark.replace(/[,;:]/g, '.');
